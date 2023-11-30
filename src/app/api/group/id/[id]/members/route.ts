@@ -64,6 +64,7 @@ export async function GET(
           pending: pendingGroupMembers.data,
         },
       },
+      message: "Group members fetched successfully",
       success: true,
       error: null,
     }),

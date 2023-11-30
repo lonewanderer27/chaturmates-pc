@@ -91,6 +91,7 @@ export async function GET(
           pending: pendingStudents.data,
         },
       },
+      message: "Group students fetched successfully",
       success: true,
       error: null,
     }),
