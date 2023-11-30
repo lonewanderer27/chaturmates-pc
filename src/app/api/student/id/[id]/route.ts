@@ -82,6 +82,7 @@ export async function GET(
         following: following.data,
         groups: groups.data,
       },
+      message: "Student found",
       success: true,
       error: null,
     }),
