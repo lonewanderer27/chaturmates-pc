@@ -77,11 +77,25 @@ export async function GET(
       pendingGroupMembers.data!.map((groupMember) => groupMember.student_id)
     );
 
-  // return the group, group members, approved group members, pending group members, students, approved students, and pending students
+  // fetch the group chat urls from the database
+  const groupChatUrls = await client
+    .from("group_chat_urls")
+    .select("*")
+    .eq("group_id", id);
+
+  // fetch the group posts from the database
+  const groupPosts = await client
+    .from("group_posts")
+    .select("*")
+    .eq("group_id", id);
+
+  // return the group, group members, approved group members, pending group members, students, approved students, and pending students, group chat urls, and group posts
   return new Response(
     JSON.stringify({
       data: {
         group: group.data,
+        chat_urls: groupChatUrls.data,
+        posts: groupPosts.data,
         members: {
           all: groupMembers.data,
           approved: approvedGroupMembers.data,
